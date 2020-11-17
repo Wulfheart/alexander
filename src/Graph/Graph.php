@@ -2,6 +2,6 @@
 
 namespace Wulfheart\Alexander\Graph;
 
-class Graph{
-    
+class Graph
+{
 }

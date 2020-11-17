@@ -1,16 +1,16 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "wulfheart/alexander",
+    "description": "",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "wulfheart",
+        "alexander"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/wulfheart/alexander",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "wulfheart",
+            "email": "dev@alexfwulf.de",
             "homepage": "https://spatie.be",
             "role": "Developer"
         }
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src"
+            "Wulfheart\\Alexander\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "Wulfheart\\Alexander\\Tests\\": "tests"
         }
     },
     "scripts": {

@@ -5,18 +5,13 @@ namespace Wulfheart\Alexander\Common;
 class Province
 {
     public string $payload;
-    
-    /**
-     * Set the value of payload
-     *
-     * @return  self
-     */ 
-    public function setPayload($payload)
+
+    public function __construct(string $s)
     {
-        $this->payload = $payload;
-    
-        return $this;
+        $this->payload = $s;
     }
+    
+
     
     /**
      * 
@@ -25,24 +20,28 @@ class Province
     public function split(): array {
         $split = explode("/", $this->payload);
         if(count($split) > 0){
-            // $sup = 
+            $sup = new Province($split[0]);
         }
         if(count($split) > 1){
-
+            $sub = new Province($split[1]);
         }
-        throw new \Exception("NotImplemented");
+        return [$sup, $sub];
     }
 
     public function join(Province $n): Province {
-        throw new \Exception("NotImplemented");
+        if($n->payload != ""){
+            return new Province(sprintf("%s/%s", $this->payload, $n->payload));
+        }
+        return $this;
     }
 
     public function super(): Province {
-        throw new \Exception("NotImplemented");
+        // ! This could be wrong
+        return $this->split()[0];
     }
 
     public function sub(): Province {
-        throw new \Exception("NotImplemented");
+        return $this->split()[1];
     }
 
     public function contains(Province $p) {

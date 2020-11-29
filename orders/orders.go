@@ -13,6 +13,7 @@ type OrderInterface interface {
 type Move struct {
 	Location godip.Province
 	To godip.Province
+	Convoy bool
 }
 
 func (m Move) ToOrder() (godip.Province, godip.Adjudicator) {

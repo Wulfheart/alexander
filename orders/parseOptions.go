@@ -25,9 +25,11 @@ func ParseMovements(o godip.Options) (movements []Move) {
 		if val, k := src.(godip.SrcProvince); k {
 			for provs, _ := range targets {
 				if tar, ok2 := provs.(godip.Province); ok2 {
+					_, convoy := o[godip.OrderType("MoveViaConvoy")][src][tar]
 					movements = append(movements, Move{
 						Location: godip.Province(val),
 						To:       tar,
+						Convoy: convoy,
 					})
 				}
 			}

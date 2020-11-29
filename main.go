@@ -16,11 +16,15 @@ func main() {
 	state, err := variant.Start()
 	state.SetUnit("eng", godip.Unit{
 		Type:   godip.Fleet,
-		Nation: godip.England,
+		Nation: godip.France,
+	})
+	state.SetUnit("mid", godip.Unit{
+		Type:   godip.Fleet,
+		Nation: godip.France,
 	})
 	state.SetUnit("wal", godip.Unit{
 		Type:   godip.Army,
-		Nation: godip.England,
+		Nation: godip.France,
 	})
 	// state.SetOrder("wal", orders.Move("wal", "pic"))
 	// state.SetOrder("eng", orders.Convoy("eng", "wal", "pic"))

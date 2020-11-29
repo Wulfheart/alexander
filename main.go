@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/zond/godip"
 	"github.com/zond/godip/variants"
-	"wulfheartalexander/advance"
 )
 
 func main() {
@@ -23,16 +22,19 @@ func main() {
 		Type:   godip.Army,
 		Nation: godip.England,
 	})
-	state.SetSC("spa", godip.France)
-
-	advance.ToPhaseType(state, godip.Adjustment)
+	// state.SetOrder("wal", orders.Move("wal", "pic"))
+	// state.SetOrder("eng", orders.Convoy("eng", "wal", "pic"))
+	// state.SetOrder("mar", orders.Move("mar", "spa"))
+	// state.SetOrder("bre", orders.Move("bre", "mid"))
+	// state.SetOrder("par", orders.Move("par", "gas"))
+	// advance.ToPhaseType(state, godip.)
 
 
 	if err != nil {
 		panic(err)
 	}
 	var opt = state.Phase().Options(state, godip.France)
-	var n = opt[godip.Province("wal")]
-	fmt.Println(n)
+
+	fmt.Println(opt)
 
 }

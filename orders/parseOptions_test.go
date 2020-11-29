@@ -1,7 +1,6 @@
 package orders
 
 import (
-	"fmt"
 	"github.com/stretchr/testify/assert"
 	"github.com/zond/godip"
 	"github.com/zond/godip/state"
@@ -14,8 +13,6 @@ func TestParseMovements(t *testing.T) {
 	s := scaffoldVariant(t, "Classical")
 	opts := s.Phase().Options(s, godip.France)
 	wal := opts[godip.Province("wal")]
-	v, _ := wal.MarshalJSON()
-	fmt.Println(string(v))
 	mvmts := ParseMovements(wal)
 	provincesWithoutConvoy := "lon,lvp,yor"
 	provincesWithConvoy := "bel,pic,bre,gas,spa,por,naf,lon"

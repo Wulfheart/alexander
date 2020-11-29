@@ -55,6 +55,14 @@ func TestParseSupports(t *testing.T){
 	}
 }
 
+func TestParseHold(t *testing.T) {
+	s := scaffoldVariant(t, "Classical")
+	opts := s.Phase().Options(s, godip.France)
+	bur := opts[godip.Province("bur")]
+	h := ParseHold(bur)
+	assert.Equal(t, h, Hold{Location: "bur"})
+}
+
 func scaffoldVariant(t *testing.T, variantName string) (s *state.State) {
 	variant, found := variants.Variants[variantName]
 	if !found {

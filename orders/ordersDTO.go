@@ -9,7 +9,7 @@ type FullOrders struct{
 	MovesViaConvoy []MoveViaConvoy
 	SupportMoves []SupportMove
 	SupportHolds []SupportHold
-	Holds []Hold
+	Holds Hold
 	Convoy []Convoy
 	Builds []Build
 	Disbands []Disband

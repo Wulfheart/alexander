@@ -68,3 +68,16 @@ func ParseSupports(o godip.Options) (shs []SupportHold, sms []SupportMove) {
 	}
 	return
 }
+
+func ParseHold(o godip.Options)(h Hold){
+	orders, ok := o[godip.OrderType("Move")]
+	if !ok {
+		return Hold{}
+	}
+	for o := range orders {
+		if src, ok := o.(godip.SrcProvince); ok {
+			return Hold{Location: godip.Province(src)}
+		}
+	}
+	return
+}

@@ -1,0 +1,9 @@
+title: SupportMove
+type: object
+properties:
+  location:
+    type: string
+  from:
+    type: string
+  to:
+    type: string

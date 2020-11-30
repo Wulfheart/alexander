@@ -20,15 +20,6 @@ func (m Move) ToOrder() (godip.Province, godip.Adjudicator) {
 	return m.Location, orders.Move(m.Location, m.To)
 }
 
-type MoveViaConvoy struct {
-	Location godip.Province
-	To godip.Province
-}
-
-func (m MoveViaConvoy) ToOrder() (godip.Province, godip.Adjudicator) {
-	return m.Location, orders.Move(m.Location, m.To)
-}
-
 type SupportMove struct {
 	Location godip.Province
 	From godip.Province

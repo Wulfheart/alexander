@@ -1,7 +1,9 @@
-title: Unit
+title: Move
 type: object
 properties:
-  type:
+  location:
     type: string
-  nation:
+  to:
     type: string
+  convoy:
+    type: boolean

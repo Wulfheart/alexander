@@ -1,52 +1,61 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	"github.com/zond/godip"
-	"github.com/zond/godip/orders"
-	"github.com/zond/godip/state"
+	"github.com/gorilla/mux"
+	"github.com/wulfheart/godip-influence/defaultInfluences"
 	"github.com/zond/godip/variants"
-	"wulfheartalexander/advance"
+	"net/http"
+	"wulfheartalexander/common"
 )
 
-func main() {
-	s := scaffoldVariant("Classical")
+func corsHeaders(w http.ResponseWriter) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+}
 
-
-	advance.ToPhaseType(s, godip.Adjustment)
-	var t = s.Phase().Options(s, godip.Austria)
-	fmt.Println(t)
+func preflight(w http.ResponseWriter, r *http.Request) {
+	corsHeaders(w)
+}
+func resolve(w http.ResponseWriter, r *http.Request) {
+	corsHeaders(w)
+	var variantName = mux.Vars(r)["variant"]
+	json.NewEncoder(w).Encode(variantName)
+	http.Error(w, "", 404)
 
 }
 
-func scaffoldVariant( variantName string) (s *state.State) {
-	variant, found := variants.Variants[variantName]
+func start(w http.ResponseWriter, r *http.Request) {
+	corsHeaders(w)
+	var variantName = mux.Vars(r)["variant"]
+	v, found := variants.Variants[variantName]
 	if !found {
-		panic(fmt.Sprint("Variant", variantName, "not found"))
+		http.Error(w, fmt.Sprintf("Variant %q not found", variantName), 404)
+		return
 	}
-	s, err := variant.Start()
+	s, err := v.Start()
 	if err != nil {
-		panic(err.Error())
+		http.Error(w, err.Error(), 500)
+		return
 	}
-	fleetFrance := godip.Unit{
-		Type:   godip.Fleet,
-		Nation: godip.France,
+
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	if err = json.NewEncoder(w).Encode(common.NewResponseDTOfromState(s, defaultInfluences.ConvertToInfluence(defaultInfluences.Classical), v)); err != nil {
+		http.Error(w, err.Error(), 500)
+		return
 	}
-	armyFrance := godip.Unit{
-		Type:   godip.Army,
-		Nation: godip.France,
-	}
-	s.SetUnit("eng", fleetFrance)
-	s.SetUnit("mid", fleetFrance)
-	s.SetUnit("wal", armyFrance)
-	s.SetUnit("pic", armyFrance)
-	s.SetUnit("bur", armyFrance)
-	s.SetUnit("ruh", armyFrance)
-	s.SetOrder("bud", orders.Move("bud", "ser"))
-	s.SetOrder("vie", orders.Move("vie", "gal"))
-	s.SetOrder("tri", orders.Move("tri", "alb"))
-	s.SetOrder("bur", orders.Move("bur", "mun"))
-	s.SetOrder("ruh", orders.SupportMove("ruh", "bur", "mun"))
-	return
+
 }
 
+func main() {
+	r := mux.NewRouter()
+	r.Methods("OPTIONS").HandlerFunc(preflight)
+	variants := r.Path("/{variant}").Subrouter()
+	variants.Methods("POST").HandlerFunc(resolve)
+	variants.Methods("GET").HandlerFunc(start)
+	// r.Path("/").HandlerFunc(listVariants)
+	http.Handle("/", r)
+	http.ListenAndServe("127.0.0.1:8000", r)
+}

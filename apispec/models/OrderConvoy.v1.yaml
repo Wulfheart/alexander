@@ -1,7 +1,9 @@
-title: Unit
+title: Convoy
 type: object
 properties:
-  type:
+  location:
     type: string
-  nation:
+  from:
+    type: string
+  to:
     type: string

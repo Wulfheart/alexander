@@ -1,0 +1,26 @@
+{
+  "season": "Spring",
+  "year": 1901,
+  "type": "Retreat",
+  "units": {
+    "ank": {
+      "nation": "Turkey",
+      "type": "fleet"
+    }
+  },
+  "supplyCenters": {
+    "ank": "Turkey"
+  },
+  "influence": {
+    "ank": "Turkey"
+  },
+  "possibleOrders": {
+    "ank": {
+      "type": "hold",
+      "payload": {
+        "from": "smy",
+        "to": "zru"
+      }
+    }
+  }
+}

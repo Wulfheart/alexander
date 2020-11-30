@@ -1,0 +1,57 @@
+{
+  "season": "Spring",
+  "year": 1901,
+  "type": "Retreat",
+  "units": {
+    "ank": {
+      "nation": "Turkey",
+      "type": "fleet"
+    }
+  },
+  "supplyCenters": {
+    "ank": "Turkey"
+  },
+  "influence": {
+    "ank": "Turkey"
+  },
+  "possibleOrders": {
+    "ank": {
+      "hold": {
+        "location": "ank"
+      },
+      "disband": {
+        "location": "ank"
+      },
+      "supportMove": [
+        {
+          "location": "ank",
+          "from": "pro",
+          "to": "pro"
+        }
+      ],
+      "supportHold": [
+        {
+          "location": "ank",
+          "to": "smy"
+        }
+      ],
+      "build": [
+        {
+          "location": "ank",
+          "unit": "army"
+        }
+      ],
+      "convoy": [
+        {
+          "location": "ank",
+          "from": "pro",
+          "to": "pro"
+        }
+      ]
+
+    }
+  },
+  "resolutions": {
+    "ank": "OK"
+  }
+}

@@ -1,0 +1,6 @@
+title: Disband
+type: object
+description: ''
+properties:
+  location:
+    type: string

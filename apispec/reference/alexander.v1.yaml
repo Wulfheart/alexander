@@ -5,6 +5,29 @@ info:
   description: ''
 servers:
   - url: 'http://localhost:3000'
-paths: {}
+paths:
+  'adjudicate/{variant}':
+    parameters:
+      - schema:
+          type: string
+        name: variant
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-variant-adudicate
+    post:
+      summary: ''
+      operationId: postadjudicate-variant
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              examples: {}
 components:
   schemas: {}

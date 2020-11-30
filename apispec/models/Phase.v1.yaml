@@ -1,7 +1,9 @@
-title: Unit
+title: Phase
 type: object
 properties:
-  type:
+  year:
+    type: integer
+  season:
     type: string
-  nation:
+  type:
     type: string

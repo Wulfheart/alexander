@@ -1,19 +1,18 @@
 package orders
 
 import (
-	"fmt"
 	"github.com/zond/godip"
 )
 
-func ParseOptions(o godip.Options, g godip.Graph) (dto DTO, err error) {
-	for province, value := range o {
-		if _, ok := province.(godip.Province); ok {
-			_ = value
-		} else {
-			return nil, fmt.Errorf("key is not a province")
-		}
-	}
-	return nil, nil
+func ParseOptions(o godip.Options, g godip.Graph) (dto FullOrders) {
+
+	dto.Moves = ParseMovements(o,g)
+	dto.Builds = ParseBuild(o,g)
+	dto.Convoy = ParseConvoy(o,g)
+	dto.Disbands = ParseDisband(o,g)
+	dto.Holds = ParseHold(o,g)
+	dto.SupportHolds, dto.SupportMoves = ParseSupports(o,g)
+	return
 }
 
 func ParseMovements(o godip.Options, g godip.Graph) (movements []Move) {

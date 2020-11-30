@@ -1,0 +1,26 @@
+type: object
+title: StateResponse
+description: ''
+x-examples: {}
+properties:
+  season:
+    type: string
+  year:
+    type: string
+  type:
+    type: string
+  units:
+    type: object
+    properties:
+      province:
+        $ref: ./Unit.v1.yaml
+  supplyCenters:
+    type: object
+    properties:
+      province:
+        type: string
+  influence:
+    type: object
+    properties:
+      province:
+        type: string

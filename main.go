@@ -13,8 +13,8 @@ func main() {
 	s := scaffoldVariant("Classical")
 
 
-	advance.ToPhaseType(s, godip.Retreat)
-	var t = s.Phase().Options(s, godip.Germany)
+	advance.ToPhaseType(s, godip.Adjustment)
+	var t = s.Phase().Options(s, godip.Austria)
 	fmt.Println(t)
 
 }
@@ -43,6 +43,8 @@ func scaffoldVariant( variantName string) (s *state.State) {
 	s.SetUnit("bur", armyFrance)
 	s.SetUnit("ruh", armyFrance)
 	s.SetOrder("bud", orders.Move("bud", "ser"))
+	s.SetOrder("vie", orders.Move("vie", "gal"))
+	s.SetOrder("tri", orders.Move("tri", "alb"))
 	s.SetOrder("bur", orders.Move("bur", "mun"))
 	s.SetOrder("ruh", orders.SupportMove("ruh", "bur", "mun"))
 	return

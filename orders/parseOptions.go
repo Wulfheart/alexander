@@ -149,3 +149,25 @@ func ParseDisband(o godip.Options, g godip.Graph) (h Disband) {
 	}
 	return
 }
+
+func ParseBuild(o godip.Options, g godip.Graph) (h []Build) {
+	orders, ok := o[godip.OrderType("Build")]
+	if !ok {
+		return []Build{}
+	}
+	for filteredOption, prov := range orders {
+		if fo, ok := filteredOption.(godip.FilteredOptionValue); ok{
+			if unit, ok2 := fo.Value.(godip.UnitType); ok2 {
+				for keyP := range prov {
+					if p, ok3 := keyP.(godip.SrcProvince); ok3{
+						h = append(h, Build{
+							Location: godip.Province(p),
+							Unit:     unit,
+						})
+					}
+				}
+			}
+		}
+	}
+	return
+}

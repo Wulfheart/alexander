@@ -130,6 +130,16 @@ func TestRetreatMovements(t *testing.T) {
 
 }
 
+func TestParseBuilds(t *testing.T) {
+	s := scaffoldVariant(t, "Classical")
+	advance.ToPhaseType(s, godip.Adjustment)
+	opts := s.Phase().Options(s, godip.Austria)
+	bur := opts[godip.Province("tri")]
+	h := ParseBuild(bur, s.Graph())
+	assert.Contains(t, h, Build{Location: "tri", Unit: godip.Fleet})
+	assert.Contains(t, h, Build{Location: "tri", Unit: godip.Army})
+}
+
 func scaffoldVariant(t *testing.T, variantName string) (s *state.State) {
 	variant, found := variants.Variants[variantName]
 	if !found {
@@ -154,6 +164,8 @@ func scaffoldVariant(t *testing.T, variantName string) (s *state.State) {
 	s.SetUnit("bur", armyFrance)
 	s.SetUnit("ruh", armyFrance)
 	s.SetOrder("bud", orders.Move("bud", "ser"))
+	s.SetOrder("vie", orders.Move("vie", "gal"))
+	s.SetOrder("tri", orders.Move("tri", "alb"))
 	s.SetOrder("bur", orders.Move("bur", "mun"))
 	s.SetOrder("ruh", orders.SupportMove("ruh", "bur", "mun"))
 	return

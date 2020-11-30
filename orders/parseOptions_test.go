@@ -71,6 +71,28 @@ func TestParseHold(t *testing.T) {
 	assert.Equal(t, h, Hold{Location: "bur"})
 }
 
+func TestParseConvoy(t *testing.T) {
+	s := scaffoldVariant(t, "Classical")
+	opts := s.Phase().Options(s, godip.France)
+	mid := opts[godip.Province("mid")]
+	c := ParseConvoy(mid, s.Graph())
+	convoyTest := map[godip.Province]string{
+		"wal": "por,gas,spa,naf,bre",
+		"pic": "por,gas,spa,naf,bre",
+
+	}
+	for key, value := range convoyTest {
+		for _, prov := range destringify(value){
+			assert.Contains(t,c,Convoy{
+				Location: "mid",
+				From:     key,
+				To:       prov,
+			})
+		}
+	}
+
+}
+
 func scaffoldVariant(t *testing.T, variantName string) (s *state.State) {
 	variant, found := variants.Variants[variantName]
 	if !found {

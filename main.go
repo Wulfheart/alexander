@@ -3,43 +3,43 @@ package main
 import (
 	"fmt"
 	"github.com/zond/godip"
+	"github.com/zond/godip/state"
 	"github.com/zond/godip/variants"
 )
 
 func main() {
-	fmt.Println("Hello World")
-	variant, found := variants.Variants["Classical"]
-	if !found {
-		panic("not found")
-	}
+	s := scaffoldVariant("Classical")
 
-	state, err := variant.Start()
-	state.SetUnit("eng", godip.Unit{
-		Type:   godip.Fleet,
-		Nation: godip.France,
-	})
-	state.SetUnit("mid", godip.Unit{
-		Type:   godip.Fleet,
-		Nation: godip.France,
-	})
-	state.SetUnit("wal", godip.Unit{
-		Type:   godip.Army,
-		Nation: godip.France,
-	})
-	// state.SetOrder("wal", orders.Move("wal", "pic"))
-	// state.SetOrder("eng", orders.Convoy("eng", "wal", "pic"))
-	// state.SetOrder("mar", orders.Move("mar", "spa"))
-	// state.SetOrder("bre", orders.Move("bre", "mid"))
-	// state.SetOrder("par", orders.Move("par", "gas"))
-	// advance.ToPhaseType(state, godip.)
 
-	t := state.Graph().Edges("wal", false)
+	var t = s.Phase().Options(s, godip.France)
 
-	if err != nil {
-		panic(err)
-	}
-	var _ = state.Phase().Options(state, godip.France)
-
-	fmt.Println( t)
+	fmt.Println(t)
 
 }
+
+func scaffoldVariant( variantName string) (s *state.State) {
+	variant, found := variants.Variants[variantName]
+	if !found {
+		panic(fmt.Sprint("Variant", variantName, "not found"))
+	}
+	s, err := variant.Start()
+	if err != nil {
+		panic(err.Error())
+	}
+	fleet := godip.Unit{
+		Type:   godip.Fleet,
+		Nation: godip.France,
+	}
+	army := godip.Unit{
+		Type:   godip.Army,
+		Nation: godip.France,
+	}
+	s.SetUnit("eng", fleet)
+	s.SetUnit("mid", fleet)
+	s.SetUnit("wal", army)
+	s.SetUnit("pic", army)
+	s.SetUnit("bur", army)
+	s.SetUnit("ruh", army)
+	return
+}
+

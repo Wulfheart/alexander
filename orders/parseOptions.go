@@ -108,3 +108,31 @@ func ParseHold(o godip.Options, g godip.Graph) (h Hold) {
 	}
 	return
 }
+
+func ParseConvoy(o godip.Options, g godip.Graph) (cvy []Convoy){
+	orders, ok := o[godip.OrderType("Convoy")]
+	if !ok {
+		return []Convoy{}
+	}
+	for src, targets := range orders {
+		if val, k := src.(godip.SrcProvince); k {
+			loc := godip.Province(val)
+			for base, tos := range targets {
+				if baseProvince, ok2 := base.(godip.Province); ok2 {
+					for ts := range tos {
+						if pts, ok3 := ts.(godip.Province); ok3 {
+
+								cvy = append(cvy, Convoy{
+									Location: loc,
+									From:     baseProvince,
+									To:       pts,
+								})
+
+						}
+					}
+				}
+			}
+		}
+	}
+	return
+}

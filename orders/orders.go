@@ -11,9 +11,9 @@ type OrderInterface interface {
 }
 
 type Move struct {
-	Location godip.Province
-	To godip.Province
-	Convoy bool
+	Location godip.Province `json:",omitempty"`
+	To godip.Province `json:",omitempty"`
+	Convoy bool `json:",omitempty"`
 }
 
 func (m Move) ToOrder() (godip.Province, godip.Adjudicator) {
@@ -21,9 +21,9 @@ func (m Move) ToOrder() (godip.Province, godip.Adjudicator) {
 }
 
 type SupportMove struct {
-	Location godip.Province
-	From godip.Province
-	To godip.Province
+	Location godip.Province `json:",omitempty"`
+	From godip.Province `json:",omitempty"`
+	To godip.Province `json:",omitempty"`
 }
 
 func (s SupportMove) ToOrder() (godip.Province, godip.Adjudicator) {
@@ -31,8 +31,8 @@ func (s SupportMove) ToOrder() (godip.Province, godip.Adjudicator) {
 }
 
 type SupportHold struct {
-	Location godip.Province
-	To godip.Province
+	Location godip.Province `json:",omitempty"`
+	To godip.Province `json:",omitempty"`
 }
 
 func (s SupportHold) ToOrder() (godip.Province, godip.Adjudicator) {
@@ -40,7 +40,7 @@ func (s SupportHold) ToOrder() (godip.Province, godip.Adjudicator) {
 }
 
 type Hold struct {
-	Location godip.Province
+	Location godip.Province `json:",omitempty"`
 }
 
 func (h Hold) ToOrder() (godip.Province, godip.Adjudicator) {
@@ -48,9 +48,9 @@ func (h Hold) ToOrder() (godip.Province, godip.Adjudicator) {
 }
 
 type Convoy struct {
-	Location godip.Province
-	From godip.Province
-	To godip.Province
+	Location godip.Province `json:",omitempty"`
+	From godip.Province `json:",omitempty"`
+	To godip.Province `json:",omitempty"`
 }
 
 func (c Convoy) ToOrder() (godip.Province, godip.Adjudicator) {
@@ -58,7 +58,7 @@ func (c Convoy) ToOrder() (godip.Province, godip.Adjudicator) {
 }
 
 type Disband struct {
-	Location godip.Province
+	Location godip.Province `json:",omitempty"`
 
 }
 
@@ -67,8 +67,8 @@ func (d Disband) ToOrder() (p godip.Province, a godip.Adjudicator) {
 }
 
 type Build struct {
-	Location godip.Province
-	Unit godip.UnitType
+	Location godip.Province `json:",omitempty"`
+	Unit godip.UnitType `json:",omitempty"`
 }
 
 func (b Build) ToOrder() (p godip.Province, a godip.Adjudicator) {

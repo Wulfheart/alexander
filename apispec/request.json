@@ -14,10 +14,11 @@
   "influence": {
     "ank": "Turkey"
   },
-  "possibleOrders": {
+  "orders": {
     "ank": {
       "type": "hold",
       "payload": {
+        "location": "ank",
         "from": "smy",
         "to": "zru"
       }

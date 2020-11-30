@@ -15,9 +15,6 @@ type ResponseDTO struct {
 	Type string
 	Units map[godip.Province]godip.Unit
 	SupplyCenters map[godip.Province]godip.Nation
-	Dislodgeds    map[godip.Province]godip.Unit
-	Dislodgers    map[godip.Province]godip.Province
-	Bounces       map[godip.Province]map[godip.Province]bool
 	Influence godipInfluence.Influence
 	PossibleOrders map[godip.Province]orders.FullOrders
 	Resolutions map[godip.Province]string
@@ -28,7 +25,8 @@ func NewResponseDTOfromState(s *state.State, old godipInfluence.Influence, v com
 	r.Year = s.Phase().Year()
 	r.Type = string(s.Phase().Type())
 	var resolutions map[godip.Province]error
-	r.Units, r.SupplyCenters, r.Dislodgeds, r.Dislodgers, r.Bounces, resolutions = s.Dump()
+	r.Units, r.SupplyCenters, _, _, _, resolutions = s.Dump()
+	r.Resolutions = make(map[godip.Province]string)
 	for prov, err := range resolutions {
 		if err == nil {
 			r.Resolutions[prov] = "OK"

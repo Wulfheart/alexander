@@ -5,7 +5,6 @@ import (
 )
 
 func ParseOptions(o godip.Options, g godip.Graph) (dto FullOrders) {
-
 	dto.Moves = ParseMovements(o,g)
 	dto.Builds = ParseBuild(o,g)
 	dto.Convoy = ParseConvoy(o,g)

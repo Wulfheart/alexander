@@ -5,7 +5,7 @@ import (
 	"github.com/zond/godip"
 )
 
-func ParseOptions(o godip.Options) (dto DTO, err error) {
+func ParseOptions(o godip.Options, g godip.Graph) (dto DTO, err error) {
 	for province, value := range o {
 		if _, ok := province.(godip.Province); ok {
 			_ = value
@@ -16,7 +16,7 @@ func ParseOptions(o godip.Options) (dto DTO, err error) {
 	return nil, nil
 }
 
-func ParseMovements(o godip.Options) (movements []Move) {
+func ParseMovements(o godip.Options, g godip.Graph) (movements []Move) {
 	orders, ok := o[godip.OrderType("Move")]
 	if !ok {
 		return []Move{}
@@ -25,11 +25,38 @@ func ParseMovements(o godip.Options) (movements []Move) {
 		if val, k := src.(godip.SrcProvince); k {
 			for provs, _ := range targets {
 				if tar, ok2 := provs.(godip.Province); ok2 {
-					_, convoy := o[godip.OrderType("MoveViaConvoy")][src][tar]
+					for key := range g.Edges(godip.Province(val), false) {
+						if key == tar {
+							movements = append(movements, Move{
+								Location: godip.Province(val),
+								To:       tar,
+								Convoy:   false,
+							})
+						}
+					}
+				}
+			}
+		}
+	}
+
+	movements = append(movements, ParseMovementsViaConvoy(o, g)...)
+	return
+}
+
+func ParseMovementsViaConvoy(o godip.Options, g godip.Graph) (movements []Move) {
+	orders, ok := o[godip.OrderType("MoveViaConvoy")]
+	if !ok {
+		return []Move{}
+	}
+	for src, targets := range orders {
+		if val, k := src.(godip.SrcProvince); k {
+			for provs, _ := range targets {
+				if tar, ok2 := provs.(godip.Province); ok2 {
+
 					movements = append(movements, Move{
 						Location: godip.Province(val),
 						To:       tar,
-						Convoy: convoy,
+						Convoy:   true,
 					})
 				}
 			}
@@ -38,7 +65,7 @@ func ParseMovements(o godip.Options) (movements []Move) {
 	return
 }
 
-func ParseSupports(o godip.Options) (shs []SupportHold, sms []SupportMove) {
+func ParseSupports(o godip.Options, g godip.Graph) (shs []SupportHold, sms []SupportMove) {
 	orders, ok := o[godip.OrderType("Support")]
 	if !ok {
 		return []SupportHold{}, []SupportMove{}
@@ -71,7 +98,7 @@ func ParseSupports(o godip.Options) (shs []SupportHold, sms []SupportMove) {
 	return
 }
 
-func ParseHold(o godip.Options)(h Hold){
+func ParseHold(o godip.Options, g godip.Graph) (h Hold) {
 	orders, ok := o[godip.OrderType("Move")]
 	if !ok {
 		return Hold{}

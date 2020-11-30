@@ -33,12 +33,13 @@ func main() {
 	// state.SetOrder("par", orders.Move("par", "gas"))
 	// advance.ToPhaseType(state, godip.)
 
+	t := state.Graph().Edges("wal", false)
 
 	if err != nil {
 		panic(err)
 	}
-	var opt = state.Phase().Options(state, godip.France)
+	var _ = state.Phase().Options(state, godip.France)
 
-	fmt.Println(opt)
+	fmt.Println( t)
 
 }

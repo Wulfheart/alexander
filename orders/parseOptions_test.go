@@ -13,7 +13,7 @@ func TestParseMovements(t *testing.T) {
 	s := scaffoldVariant(t, "Classical")
 	opts := s.Phase().Options(s, godip.France)
 	wal := opts[godip.Province("wal")]
-	mvmts := ParseMovements(wal)
+	mvmts := ParseMovements(wal, s.Graph())
 	provincesWithoutConvoy := "lon,lvp,yor"
 	provincesWithConvoy := "bel,pic,bre,gas,spa,por,naf,lon"
 	for _, p := range destringify(provincesWithoutConvoy){
@@ -36,7 +36,7 @@ func TestParseSupports(t *testing.T){
 	s := scaffoldVariant(t, "Classical")
 	opts := s.Phase().Options(s, godip.France)
 	bur := opts[godip.Province("bur")]
-	shs, sms := ParseSupports(bur)
+	shs, sms := ParseSupports(bur, s.Graph())
 	supportHoldTest := []godip.Province{"mun", "ruh", "par", "mar", "pic"}
 	for _, p := range supportHoldTest {
 		assert.Contains(t, shs, SupportHold{
@@ -67,7 +67,7 @@ func TestParseHold(t *testing.T) {
 	s := scaffoldVariant(t, "Classical")
 	opts := s.Phase().Options(s, godip.France)
 	bur := opts[godip.Province("bur")]
-	h := ParseHold(bur)
+	h := ParseHold(bur, s.Graph())
 	assert.Equal(t, h, Hold{Location: "bur"})
 }
 

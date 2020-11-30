@@ -3,16 +3,18 @@ package main
 import (
 	"fmt"
 	"github.com/zond/godip"
+	"github.com/zond/godip/orders"
 	"github.com/zond/godip/state"
 	"github.com/zond/godip/variants"
+	"wulfheartalexander/advance"
 )
 
 func main() {
 	s := scaffoldVariant("Classical")
 
 
-	var t = s.Phase().Options(s, godip.France)
-
+	advance.ToPhaseType(s, godip.Retreat)
+	var t = s.Phase().Options(s, godip.Germany)
 	fmt.Println(t)
 
 }
@@ -26,20 +28,23 @@ func scaffoldVariant( variantName string) (s *state.State) {
 	if err != nil {
 		panic(err.Error())
 	}
-	fleet := godip.Unit{
+	fleetFrance := godip.Unit{
 		Type:   godip.Fleet,
 		Nation: godip.France,
 	}
-	army := godip.Unit{
+	armyFrance := godip.Unit{
 		Type:   godip.Army,
 		Nation: godip.France,
 	}
-	s.SetUnit("eng", fleet)
-	s.SetUnit("mid", fleet)
-	s.SetUnit("wal", army)
-	s.SetUnit("pic", army)
-	s.SetUnit("bur", army)
-	s.SetUnit("ruh", army)
+	s.SetUnit("eng", fleetFrance)
+	s.SetUnit("mid", fleetFrance)
+	s.SetUnit("wal", armyFrance)
+	s.SetUnit("pic", armyFrance)
+	s.SetUnit("bur", armyFrance)
+	s.SetUnit("ruh", armyFrance)
+	s.SetOrder("bud", orders.Move("bud", "ser"))
+	s.SetOrder("bur", orders.Move("bur", "mun"))
+	s.SetOrder("ruh", orders.SupportMove("ruh", "bur", "mun"))
 	return
 }
 

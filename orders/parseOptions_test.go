@@ -3,10 +3,12 @@ package orders
 import (
 	"github.com/stretchr/testify/assert"
 	"github.com/zond/godip"
+	"github.com/zond/godip/orders"
 	"github.com/zond/godip/state"
 	"github.com/zond/godip/variants"
 	"strings"
 	"testing"
+	"wulfheartalexander/advance"
 )
 
 func TestParseMovements(t *testing.T) {
@@ -28,6 +30,15 @@ func TestParseMovements(t *testing.T) {
 			Location: "wal",
 			To:       p,
 			Convoy:   true,
+		})
+	}
+
+	provincesWithoutPossibleConvoy := "pic,bre,bur,gas"
+	for _, p := range destringify(provincesWithoutPossibleConvoy){
+		assert.Contains(t, ParseMovements(opts[godip.Province("par")], s.Graph()), Move{
+			Location: "par",
+			To:       p,
+			Convoy:   false,
 		})
 	}
 }
@@ -93,6 +104,32 @@ func TestParseConvoy(t *testing.T) {
 
 }
 
+func TestParseDisband(t *testing.T) {
+	s := scaffoldVariant(t, "Classical")
+	advance.ToPhaseType(s, godip.Retreat)
+	opts := s.Phase().Options(s, godip.Germany)
+	bur := opts[godip.Province("mun")]
+	h := ParseDisband(bur, s.Graph())
+	assert.Equal(t, h, Disband{Location: "mun"})
+}
+
+func TestRetreatMovements(t *testing.T) {
+	s := scaffoldVariant(t, "Classical")
+	advance.ToPhaseType(s, godip.Retreat)
+	opts := s.Phase().Options(s, godip.Germany)
+	mun := opts[godip.Province("mun")]
+	mvmts := ParseMovements(mun, s.Graph())
+	provincesWithoutConvoy := "tyr,boh,sil"
+	for _, p := range destringify(provincesWithoutConvoy){
+		assert.Contains(t, mvmts, Move{
+			Location: "mun",
+			To:       p,
+			Convoy:   false,
+		})
+	}
+
+}
+
 func scaffoldVariant(t *testing.T, variantName string) (s *state.State) {
 	variant, found := variants.Variants[variantName]
 	if !found {
@@ -102,20 +139,23 @@ func scaffoldVariant(t *testing.T, variantName string) (s *state.State) {
 	if err != nil {
 		t.Fatal(err.Error())
 	}
-	fleet := godip.Unit{
+	fleetFrance := godip.Unit{
 		Type:   godip.Fleet,
 		Nation: godip.France,
 	}
-	army := godip.Unit{
+	armyFrance := godip.Unit{
 		Type:   godip.Army,
 		Nation: godip.France,
 	}
-	s.SetUnit("eng", fleet)
-	s.SetUnit("mid", fleet)
-	s.SetUnit("wal", army)
-	s.SetUnit("pic", army)
-	s.SetUnit("bur", army)
-	s.SetUnit("ruh", army)
+	s.SetUnit("eng", fleetFrance)
+	s.SetUnit("mid", fleetFrance)
+	s.SetUnit("wal", armyFrance)
+	s.SetUnit("pic", armyFrance)
+	s.SetUnit("bur", armyFrance)
+	s.SetUnit("ruh", armyFrance)
+	s.SetOrder("bud", orders.Move("bud", "ser"))
+	s.SetOrder("bur", orders.Move("bur", "mun"))
+	s.SetOrder("ruh", orders.SupportMove("ruh", "bur", "mun"))
 	return
 }
 

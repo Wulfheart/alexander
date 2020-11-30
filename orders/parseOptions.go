@@ -42,7 +42,7 @@ func ParseMovements(o godip.Options, g godip.Graph) (movements []Move) {
 	// Parsing Movements via convoy
 	orders, ok = o[godip.OrderType("MoveViaConvoy")]
 	if !ok {
-		return []Move{}
+		return
 	}
 	for src, targets := range orders {
 		if val, k := src.(godip.SrcProvince); k {
@@ -97,7 +97,7 @@ func ParseSupports(o godip.Options, g godip.Graph) (shs []SupportHold, sms []Sup
 }
 
 func ParseHold(o godip.Options, g godip.Graph) (h Hold) {
-	orders, ok := o[godip.OrderType("Move")]
+	orders, ok := o[godip.OrderType("Hold")]
 	if !ok {
 		return Hold{}
 	}
@@ -132,6 +132,19 @@ func ParseConvoy(o godip.Options, g godip.Graph) (cvy []Convoy){
 					}
 				}
 			}
+		}
+	}
+	return
+}
+
+func ParseDisband(o godip.Options, g godip.Graph) (h Disband) {
+	orders, ok := o[godip.OrderType("Disband")]
+	if !ok {
+		return Disband{}
+	}
+	for o := range orders {
+		if src, ok := o.(godip.SrcProvince); ok {
+			return Disband{Location: godip.Province(src)}
 		}
 	}
 	return

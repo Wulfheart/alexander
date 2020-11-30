@@ -12,5 +12,5 @@ type FullOrders struct{
 	Holds Hold
 	Convoy []Convoy
 	Builds []Build
-	Disbands []Disband
+	Disbands Disband
 }

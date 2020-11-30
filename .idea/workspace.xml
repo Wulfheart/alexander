@@ -22,6 +22,7 @@
     <list default="true" id="bfbd14b3-28bd-42e0-866a-da1b710c2c5f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/ordersDTO.go" beforeDir="false" afterPath="$PROJECT_DIR$/orders/ordersDTO.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orders/parseOptions.go" beforeDir="false" afterPath="$PROJECT_DIR$/orders/parseOptions.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orders/parseOptions_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/orders/parseOptions_test.go" afterDir="false" />
     </list>
@@ -67,7 +68,7 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="Go Test.TestParseConvoy in wulfheartalexander/orders">
+  <component name="RunManager" selected="Go Test.TestParseMovements in wulfheartalexander/orders (1)">
     <configuration name="go build wulfheartalexander" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="alexander" />
       <working_directory value="$PROJECT_DIR$" />
@@ -77,29 +78,7 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestParseConvoy in wulfheartalexander/orders" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="alexander" />
-      <working_directory value="$PROJECT_DIR$/orders" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="wulfheartalexander/orders" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestParseConvoy\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestParseMovements in wulfheartalexander/orders (4)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="alexander" />
-      <working_directory value="$PROJECT_DIR$/orders" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="wulfheartalexander/orders" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestParseMovements\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestParseMovements in wulfheartalexander/orders (5)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestParseMovements in wulfheartalexander/orders (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="alexander" />
       <working_directory value="$PROJECT_DIR$/orders" />
       <framework value="gotest" />
@@ -121,13 +100,35 @@
       <pattern value="^\QTestParseMovements\E$" />
       <method v="2" />
     </configuration>
+    <configuration name="TestRetreatMovements in wulfheartalexander/orders (2)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="alexander" />
+      <working_directory value="$PROJECT_DIR$/orders" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="wulfheartalexander/orders" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestRetreatMovements\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestRetreatMovements in wulfheartalexander/orders (3)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="alexander" />
+      <working_directory value="$PROJECT_DIR$/orders" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="wulfheartalexander/orders" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestRetreatMovements\E$" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestParseConvoy in wulfheartalexander/orders" />
-        <item itemvalue="Go Build.go build wulfheartalexander" />
+        <item itemvalue="Go Test.TestParseMovements in wulfheartalexander/orders (1)" />
         <item itemvalue="Go Test.TestParseMovements in wulfheartalexander/orders" />
-        <item itemvalue="Go Test.TestParseMovements in wulfheartalexander/orders (5)" />
-        <item itemvalue="Go Test.TestParseMovements in wulfheartalexander/orders (4)" />
+        <item itemvalue="Go Test.TestRetreatMovements in wulfheartalexander/orders (3)" />
+        <item itemvalue="Go Test.TestRetreatMovements in wulfheartalexander/orders (2)" />
+        <item itemvalue="Go Build.go build wulfheartalexander" />
       </list>
     </recent_temporary>
   </component>
@@ -162,46 +163,46 @@
       <screen x="0" y="0" width="1831" height="1080" />
     </state>
     <state x="369" y="195" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1465.864/0.0.1831.1080@0.0.1831.1080" timestamp="1606059649187" />
-    <state width="1405" height="344" key="GridCell.Tab.0.bottom" timestamp="1606732246966">
+    <state width="1405" height="358" key="GridCell.Tab.0.bottom" timestamp="1606733364336">
       <screen x="0" y="0" width="1447" height="864" />
     </state>
     <state width="1788" height="364" key="GridCell.Tab.0.bottom/-1920.0.1465.864/0.0.1831.1080@0.0.1831.1080" timestamp="1606693130183" />
-    <state width="1405" height="344" key="GridCell.Tab.0.bottom/0.0.1447.864@0.0.1447.864" timestamp="1606732246966" />
-    <state width="1405" height="344" key="GridCell.Tab.0.center" timestamp="1606732246966">
+    <state width="1405" height="358" key="GridCell.Tab.0.bottom/0.0.1447.864@0.0.1447.864" timestamp="1606733364336" />
+    <state width="1405" height="358" key="GridCell.Tab.0.center" timestamp="1606733364336">
       <screen x="0" y="0" width="1447" height="864" />
     </state>
     <state width="1788" height="364" key="GridCell.Tab.0.center/-1920.0.1465.864/0.0.1831.1080@0.0.1831.1080" timestamp="1606693130183" />
-    <state width="1405" height="344" key="GridCell.Tab.0.center/0.0.1447.864@0.0.1447.864" timestamp="1606732246966" />
-    <state width="1405" height="344" key="GridCell.Tab.0.left" timestamp="1606732246966">
+    <state width="1405" height="358" key="GridCell.Tab.0.center/0.0.1447.864@0.0.1447.864" timestamp="1606733364336" />
+    <state width="1405" height="358" key="GridCell.Tab.0.left" timestamp="1606733364335">
       <screen x="0" y="0" width="1447" height="864" />
     </state>
     <state width="1788" height="364" key="GridCell.Tab.0.left/-1920.0.1465.864/0.0.1831.1080@0.0.1831.1080" timestamp="1606693130183" />
-    <state width="1405" height="344" key="GridCell.Tab.0.left/0.0.1447.864@0.0.1447.864" timestamp="1606732246966" />
-    <state width="1405" height="344" key="GridCell.Tab.0.right" timestamp="1606732246966">
+    <state width="1405" height="358" key="GridCell.Tab.0.left/0.0.1447.864@0.0.1447.864" timestamp="1606733364335" />
+    <state width="1405" height="358" key="GridCell.Tab.0.right" timestamp="1606733364336">
       <screen x="0" y="0" width="1447" height="864" />
     </state>
     <state width="1788" height="364" key="GridCell.Tab.0.right/-1920.0.1465.864/0.0.1831.1080@0.0.1831.1080" timestamp="1606693130183" />
-    <state width="1405" height="344" key="GridCell.Tab.0.right/0.0.1447.864@0.0.1447.864" timestamp="1606732246966" />
-    <state width="1405" height="344" key="GridCell.Tab.1.bottom" timestamp="1606732246966">
+    <state width="1405" height="358" key="GridCell.Tab.0.right/0.0.1447.864@0.0.1447.864" timestamp="1606733364336" />
+    <state width="1405" height="358" key="GridCell.Tab.1.bottom" timestamp="1606733364336">
       <screen x="0" y="0" width="1447" height="864" />
     </state>
     <state width="1788" height="364" key="GridCell.Tab.1.bottom/-1920.0.1465.864/0.0.1831.1080@0.0.1831.1080" timestamp="1606693130183" />
-    <state width="1405" height="344" key="GridCell.Tab.1.bottom/0.0.1447.864@0.0.1447.864" timestamp="1606732246966" />
-    <state width="1405" height="344" key="GridCell.Tab.1.center" timestamp="1606732246966">
+    <state width="1405" height="358" key="GridCell.Tab.1.bottom/0.0.1447.864@0.0.1447.864" timestamp="1606733364336" />
+    <state width="1405" height="358" key="GridCell.Tab.1.center" timestamp="1606733364336">
       <screen x="0" y="0" width="1447" height="864" />
     </state>
     <state width="1788" height="364" key="GridCell.Tab.1.center/-1920.0.1465.864/0.0.1831.1080@0.0.1831.1080" timestamp="1606693130183" />
-    <state width="1405" height="344" key="GridCell.Tab.1.center/0.0.1447.864@0.0.1447.864" timestamp="1606732246966" />
-    <state width="1405" height="344" key="GridCell.Tab.1.left" timestamp="1606732246966">
+    <state width="1405" height="358" key="GridCell.Tab.1.center/0.0.1447.864@0.0.1447.864" timestamp="1606733364336" />
+    <state width="1405" height="358" key="GridCell.Tab.1.left" timestamp="1606733364336">
       <screen x="0" y="0" width="1447" height="864" />
     </state>
     <state width="1788" height="364" key="GridCell.Tab.1.left/-1920.0.1465.864/0.0.1831.1080@0.0.1831.1080" timestamp="1606693130183" />
-    <state width="1405" height="344" key="GridCell.Tab.1.left/0.0.1447.864@0.0.1447.864" timestamp="1606732246966" />
-    <state width="1405" height="344" key="GridCell.Tab.1.right" timestamp="1606732246966">
+    <state width="1405" height="358" key="GridCell.Tab.1.left/0.0.1447.864@0.0.1447.864" timestamp="1606733364336" />
+    <state width="1405" height="358" key="GridCell.Tab.1.right" timestamp="1606733364336">
       <screen x="0" y="0" width="1447" height="864" />
     </state>
     <state width="1788" height="364" key="GridCell.Tab.1.right/-1920.0.1465.864/0.0.1831.1080@0.0.1831.1080" timestamp="1606693130183" />
-    <state width="1405" height="344" key="GridCell.Tab.1.right/0.0.1447.864@0.0.1447.864" timestamp="1606732246966" />
+    <state width="1405" height="358" key="GridCell.Tab.1.right/0.0.1447.864@0.0.1447.864" timestamp="1606733364336" />
     <state x="416" y="185" key="SettingsEditor" timestamp="1606665519123">
       <screen x="0" y="0" width="1831" height="1080" />
     </state>
@@ -230,15 +231,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/main.go</url>
-          <line>15</line>
+          <line>17</line>
           <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/orders/parseOptions_test.go</url>
+          <line>107</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/orders/parseOptions.go</url>
+          <line>19</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
-      <configuration name="GoApplicationRunConfiguration">
-        <watch expression="" />
-      </configuration>
       <configuration name="GoTestRunConfiguration">
         <watch expression="*(*&quot;github.com/zond/godip.Options&quot;)(824635792760)" />
       </configuration>

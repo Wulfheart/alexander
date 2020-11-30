@@ -67,18 +67,7 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="Go Test.TestParseMovements in wulfheartalexander/orders (5)">
-    <configuration name="TestParseMovements in wulfheartalexander/orders (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="alexander" />
-      <working_directory value="$PROJECT_DIR$/orders" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="wulfheartalexander/orders" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestParseMovements\E$" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Go Test.TestParseMovements in wulfheartalexander/orders">
     <configuration name="TestParseMovements in wulfheartalexander/orders (2)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="alexander" />
       <working_directory value="$PROJECT_DIR$/orders" />
@@ -123,13 +112,24 @@
       <pattern value="^\QTestParseMovements\E$" />
       <method v="2" />
     </configuration>
+    <configuration name="TestParseMovements in wulfheartalexander/orders" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="alexander" />
+      <working_directory value="$PROJECT_DIR$/orders" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="wulfheartalexander/orders" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestParseMovements\E$" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestParseMovements in wulfheartalexander/orders" />
         <item itemvalue="Go Test.TestParseMovements in wulfheartalexander/orders (5)" />
         <item itemvalue="Go Test.TestParseMovements in wulfheartalexander/orders (4)" />
         <item itemvalue="Go Test.TestParseMovements in wulfheartalexander/orders (3)" />
         <item itemvalue="Go Test.TestParseMovements in wulfheartalexander/orders (2)" />
-        <item itemvalue="Go Test.TestParseMovements in wulfheartalexander/orders (1)" />
       </list>
     </recent_temporary>
   </component>

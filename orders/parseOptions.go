@@ -39,12 +39,8 @@ func ParseMovements(o godip.Options, g godip.Graph) (movements []Move) {
 		}
 	}
 
-	movements = append(movements, ParseMovementsViaConvoy(o, g)...)
-	return
-}
-
-func ParseMovementsViaConvoy(o godip.Options, g godip.Graph) (movements []Move) {
-	orders, ok := o[godip.OrderType("MoveViaConvoy")]
+	// Parsing Movements via convoy
+	orders, ok = o[godip.OrderType("MoveViaConvoy")]
 	if !ok {
 		return []Move{}
 	}
@@ -62,8 +58,10 @@ func ParseMovementsViaConvoy(o godip.Options, g godip.Graph) (movements []Move) 
 			}
 		}
 	}
+
 	return
 }
+
 
 func ParseSupports(o godip.Options, g godip.Graph) (shs []SupportHold, sms []SupportMove) {
 	orders, ok := o[godip.OrderType("Support")]

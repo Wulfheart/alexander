@@ -73,5 +73,5 @@ func main() {
 	variants.Methods("GET").HandlerFunc(start)
 	// r.Path("/").HandlerFunc(listVariants)
 	http.Handle("/", r)
-	http.ListenAndServe("127.0.0.1:8000", r)
+	http.ListenAndServe("192.168.178.23:8000", r)
 }

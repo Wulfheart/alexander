@@ -20,9 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bfbd14b3-28bd-42e0-866a-da1b710c2c5f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cmd/meta.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/meta.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/root.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/root.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/meta.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/meta.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

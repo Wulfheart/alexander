@@ -14,13 +14,14 @@ var rootCmd = &cobra.Command{
 	Use:   "alex",
 	Short: "alex is a cli for adjudicating diplomacy games",
 	Run: func(cmd *cobra.Command, args []string) {
-		cmd.Help()
+		_ = cmd.Help()
 	},
+	Version: "0.3.0",
 }
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		fmt.Fprintln(os.Stderr, err)
+		_, _ = fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }

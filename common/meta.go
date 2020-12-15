@@ -9,6 +9,7 @@ type MetaDto struct {
 	Provinces map[godip.Province]string
 	UnitTypes []godip.UnitType
 	Seasons []godip.Season
+	Phases []godip.PhaseType
 	Nations []godip.Nation
 	OrderTypes []godip.OrderType
 }
@@ -18,6 +19,7 @@ func CreateMetaDtoFromVariant(v common.Variant) MetaDto{
 		Provinces:  v.ProvinceLongNames,
 		UnitTypes:  v.UnitTypes,
 		Seasons:    v.Seasons,
+		Phases:     v.PhaseTypes,
 		Nations:    v.Nations,
 		OrderTypes: v.Parser.OrderTypes(),
 	}

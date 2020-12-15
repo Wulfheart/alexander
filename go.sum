@@ -186,6 +186,8 @@ github.com/wulfheart/godip-influence v0.0.3/go.mod h1:56vXWmNY956IrZNt1I82wUJz/+
 github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2/go.mod h1:UETIi67q53MR2AWcXfiuqkDkRtnGDLqkBTpCHuJHxtU=
 github.com/zond/godip v0.1.87 h1:MGBX6Ssse5WZ3PDbcbNb3czqoLEz51aAJu19Dt2Dr7o=
 github.com/zond/godip v0.1.87/go.mod h1:GdBRhBZywItOSyCmBt6N7m5PRLW4gn9mUIf4NjOGGTQ=
+github.com/zond/godip v0.1.88-0.20201215121024-9dad40bafc42 h1:v8hWp/Hif3uj2ISAi26jW+kxJciPJ1qthluxFIo4g+Q=
+github.com/zond/godip v0.1.88-0.20201215121024-9dad40bafc42/go.mod h1:GdBRhBZywItOSyCmBt6N7m5PRLW4gn9mUIf4NjOGGTQ=
 go.etcd.io/bbolt v1.3.2/go.mod h1:IbVyRI1SCnLcuJnV2u8VeU0CEYM7e686BmAb1XKL+uU=
 go.opencensus.io v0.21.0/go.mod h1:mSImk1erAIZhrmZN+AvHh14ztQfjbGwt4TtuofqLduU=
 go.opencensus.io v0.22.0/go.mod h1:+kGneAE2xo2IficOXnaByMWTGM9T73dGwxeWcUqIpI8=

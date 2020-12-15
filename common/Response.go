@@ -17,11 +17,17 @@ type ResponseDTO struct {
 	SupplyCenters map[godip.Province]godip.Nation
 	Influence godipInfluence.Influence
 	PossibleOrders map[godip.Province]orders.FullOrders
+	PreviouslyAppliedOrders map[godip.Province]orders.AppliedOrder
 	Resolutions map[godip.Province]string
 }
 
 func NewResponseDTOfromState(s *state.State, old godipInfluence.Influence, v common.Variant) (r ResponseDTO) {
 	r.Season = string(s.Phase().Season())
+	var m = s.PreviouslyAppliedOrders()
+	r.PreviouslyAppliedOrders = make(map[godip.Province]orders.AppliedOrder)
+	for province, adjudicator := range m {
+		r.PreviouslyAppliedOrders[province] = orders.FullOrdersFromAdjudicator(adjudicator)
+	}
 	r.Year = s.Phase().Year()
 	r.Type = string(s.Phase().Type())
 	var resolutions map[godip.Province]error

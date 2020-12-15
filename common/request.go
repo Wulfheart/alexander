@@ -6,7 +6,6 @@ import (
 	orders2 "github.com/zond/godip/orders"
 	"github.com/zond/godip/state"
 	"github.com/zond/godip/variants/common"
-	"strings"
 	"time"
 )
 
@@ -40,20 +39,20 @@ type OrderRequestDTO struct {
 }
 
 func (o *OrderRequestDTO) Parse() godip.Adjudicator{
-	switch strings.ToLower(o.Type) {
-	case "move":
+	switch o.Type {
+	case "Move":
 		return orders2.Move(o.Payload.Location, o.Payload.To)
-	case "supporthold":
+	case "SupportHold":
 		return orders2.SupportHold(o.Payload.Location, o.Payload.To)
-	case "supportmove":
+	case "SupportMove":
 		return orders2.SupportMove(o.Payload.Location, o.Payload.From, o.Payload.To)
-	case "hold":
+	case "Hold":
 		return orders2.Hold(o.Payload.Location)
-	case "disband":
+	case "Disband":
 		return orders2.Disband(o.Payload.Location, time.Now())
-	case "build":
+	case "Build":
 		return orders2.Build(o.Payload.Location, o.Payload.Unit, time.Now())
-	case "convoy":
+	case "Convoy":
 		return orders2.Convoy(o.Payload.Location, o.Payload.From, o.Payload.To)
 	}
 	return nil

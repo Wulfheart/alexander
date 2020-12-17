@@ -5,7 +5,9 @@ import (
 	"fmt"
 	"github.com/wulfheart/godip-influence/defaultInfluences"
 	"github.com/zond/godip/variants"
+	"go.uber.org/zap"
 	"wulfheartalexander/common"
+	"wulfheartalexander/logging"
 
 	"github.com/spf13/cobra"
 )
@@ -19,23 +21,28 @@ var adjudicateCmd = &cobra.Command{
 	Short: "Adjudicate an existing game",
 	Args: cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
-
+		logging.Logger.Debug("Adjudication command called")
 		v, found := variants.Variants[variant]
 		if !found {
-			panic(fmt.Errorf("variant %q not found", variant))
+			logging.Logger.Error("Variant not found", zap.String("variant", variant))
 		}
+		logging.Logger.Debug("Variant found", zap.String("variant", variant))
 		p := common.RequestDTO{}
 		if err := json.Unmarshal([]byte(data), &p); err != nil {
-			panic(err)
+			logging.Logger.Error("Error unmarshalling input data")
 		}
+		logging.Logger.Debug("Input data unmarshalled successfully")
 		s := p.State(v)
+		logging.Logger.Debug("Phase of game state created")
 		if err := s.Next(); err != nil {
-			panic(err)
+			logging.Logger.Error(err.Error())
 		}
+		logging.Logger.Debug("Phase of game adjudicated")
 		res, err := json.Marshal(common.NewResponseDTOfromState(s, defaultInfluences.ConvertToInfluence(defaultInfluences.Classical), v))
 		if err != nil {
-			panic(err)
+			logging.Logger.Error(err.Error())
 		}
+		logging.Logger.Debug("Response JSON created")
 		fmt.Println(string(res))
 	},
 }

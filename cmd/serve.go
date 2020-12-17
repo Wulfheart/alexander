@@ -16,9 +16,13 @@ limitations under the License.
 package cmd
 
 import (
-	"wulfheartalexander/server"
-
 	"github.com/spf13/cobra"
+	"wulfheartalexander/server"
+)
+
+var(
+	ip string
+	port string
 )
 
 // serveCmd represents the serve command
@@ -26,12 +30,15 @@ var serveCmd = &cobra.Command{
 	Use:   "serve",
 	Short: "starts a server",
 	Run: func(cmd *cobra.Command, args []string) {
-		server.Init()
+		server.Init(ip, port)
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(serveCmd)
+	serveCmd.Flags().StringVar(&ip, "ip", "127.0.0.1", "IP Address of the serve")
+	serveCmd.Flags().StringVar(&port, "port", "8000", "Port of the server")
+
 
 	// Here you will define your flags and configuration settings.
 

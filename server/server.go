@@ -6,8 +6,10 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/wulfheart/godip-influence/defaultInfluences"
 	"github.com/zond/godip/variants"
+	"go.uber.org/zap"
 	"net/http"
 	"wulfheartalexander/common"
+	"wulfheartalexander/logging"
 )
 
 
@@ -66,7 +68,7 @@ func start(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func Init() {
+func Init(ip string, port string) {
 	r := mux.NewRouter()
 	r.Methods("OPTIONS").HandlerFunc(preflight)
 	subrouter := r.Path("/{variant}").Subrouter()
@@ -74,5 +76,6 @@ func Init() {
 	subrouter.Methods("GET").HandlerFunc(start)
 	// r.Path("/").HandlerFunc(listVariants)
 	http.Handle("/", r)
-	http.ListenAndServe("192.168.178.23:8000", r)
+	logging.Logger.Info("Starting internal server", zap.String("ip", ip), zap.String("port", port))
+	http.ListenAndServe(ip + ":" + port, r)
 }

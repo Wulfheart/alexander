@@ -21,6 +21,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/zond/godip/variants"
 	"wulfheartalexander/common"
+	"wulfheartalexander/logging"
 )
 
 // metaCmd represents the meta command
@@ -30,12 +31,11 @@ var metaCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		v, found := variants.Variants[variant]
 		if !found {
-			panic(fmt.Errorf("variant %q not found", variant))
+			logging.Logger.Error(fmt.Sprintf("variant %q not found", variant))
 		}
 		res, err := json.Marshal(common.CreateMetaDtoFromVariant(v))
-		// res, err := json.Marshal(v)
 		if err != nil {
-			panic(err)
+			logging.Logger.Error(err.Error())
 		}
 		fmt.Println(string(res))
 
